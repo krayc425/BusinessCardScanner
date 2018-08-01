@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2413159B210FF9FF001B8749 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2413159A210FF9FF001B8749 /* UIImageExtensions.swift */; };
+		241315A121101058001B8749 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A021101058001B8749 /* ContactModel.swift */; };
+		241315A321104871001B8749 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A221104870001B8749 /* ContactManager.swift */; };
+		241315A521104B18001B8749 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A421104B18001B8749 /* ListTableViewCell.swift */; };
+		244D590D2111478F008B2783 /* CardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D590C2111478F008B2783 /* CardHelper.swift */; };
+		244D590F2111615C008B2783 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D590E2111615C008B2783 /* Keys.swift */; };
+		244D5911211161AC008B2783 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D5910211161AC008B2783 /* StringExtensions.swift */; };
+		24EACFCB210EDFB10096995C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EACFCA210EDFB10096995C /* AppDelegate.swift */; };
+		24EACFD0210EDFB10096995C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EACFCE210EDFB10096995C /* Main.storyboard */; };
+		24EACFD2210EDFB20096995C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24EACFD1210EDFB20096995C /* Assets.xcassets */; };
+		24EACFD5210EDFB20096995C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24EACFD3210EDFB20096995C /* LaunchScreen.storyboard */; };
+		24EACFDD210EE3B50096995C /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EACFDC210EE3B50096995C /* InfoTableViewController.swift */; };
+		24EACFDF210EE7100096995C /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EACFDE210EE7100096995C /* ListTableViewController.swift */; };
+		94186DCD6DE336DA57F42EF5 /* Pods_BusinessCardScanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDBB371817BFD5C04995F38 /* Pods_BusinessCardScanner.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2413159A210FF9FF001B8749 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		241315A021101058001B8749 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
+		241315A221104870001B8749 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
+		241315A421104B18001B8749 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		244D590C2111478F008B2783 /* CardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHelper.swift; sourceTree = "<group>"; };
+		244D590E2111615C008B2783 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		244D5910211161AC008B2783 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		24EACFC7210EDFB10096995C /* BusinessCardScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BusinessCardScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		24EACFCA210EDFB10096995C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		24EACFCF210EDFB10096995C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		24EACFD1210EDFB20096995C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		24EACFD4210EDFB20096995C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		24EACFD6210EDFB20096995C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24EACFDC210EE3B50096995C /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		24EACFDE210EE7100096995C /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		7FDBB371817BFD5C04995F38 /* Pods_BusinessCardScanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BusinessCardScanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96A9350AB39564B3EA1F50CA /* Pods-BusinessCardScanner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCardScanner.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BusinessCardScanner/Pods-BusinessCardScanner.debug.xcconfig"; sourceTree = "<group>"; };
+		9FDA3CA19FB4C90B4F528A9F /* Pods-BusinessCardScanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BusinessCardScanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-BusinessCardScanner/Pods-BusinessCardScanner.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24EACFC4210EDFB10096995C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94186DCD6DE336DA57F42EF5 /* Pods_BusinessCardScanner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		086E3355667A420328A84954 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7FDBB371817BFD5C04995F38 /* Pods_BusinessCardScanner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		244D5912211164B3008B2783 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				244D5910211161AC008B2783 /* StringExtensions.swift */,
+				2413159A210FF9FF001B8749 /* UIImageExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		24EACFBE210EDFB10096995C = {
+			isa = PBXGroup;
+			children = (
+				24EACFC9210EDFB10096995C /* BusinessCardScanner */,
+				FDC7741B090A44B8137B918E /* Pods */,
+				086E3355667A420328A84954 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		24EACFC8210EDFB10096995C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24EACFC7210EDFB10096995C /* BusinessCardScanner.app */,
+			);
+			name = Products;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		24EACFC9210EDFB10096995C /* BusinessCardScanner */ = {
+			isa = PBXGroup;
+			children = (
+				24EACFCA210EDFB10096995C /* AppDelegate.swift */,
+				24EACFDE210EE7100096995C /* ListTableViewController.swift */,
+				241315A421104B18001B8749 /* ListTableViewCell.swift */,
+				24EACFDC210EE3B50096995C /* InfoTableViewController.swift */,
+				244D590E2111615C008B2783 /* Keys.swift */,
+				244D590C2111478F008B2783 /* CardHelper.swift */,
+				241315A021101058001B8749 /* ContactModel.swift */,
+				241315A221104870001B8749 /* ContactManager.swift */,
+				244D5912211164B3008B2783 /* Extensions */,
+				24EACFD1210EDFB20096995C /* Assets.xcassets */,
+				24EACFCE210EDFB10096995C /* Main.storyboard */,
+				24EACFD3210EDFB20096995C /* LaunchScreen.storyboard */,
+				24EACFD6210EDFB20096995C /* Info.plist */,
+				24EACFC8210EDFB10096995C /* Products */,
+			);
+			path = BusinessCardScanner;
+			sourceTree = "<group>";
+		};
+		FDC7741B090A44B8137B918E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				96A9350AB39564B3EA1F50CA /* Pods-BusinessCardScanner.debug.xcconfig */,
+				9FDA3CA19FB4C90B4F528A9F /* Pods-BusinessCardScanner.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24EACFC6210EDFB10096995C /* BusinessCardScanner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24EACFD9210EDFB20096995C /* Build configuration list for PBXNativeTarget "BusinessCardScanner" */;
+			buildPhases = (
+				9A3AD17A0180508DBBE3AAC2 /* [CP] Check Pods Manifest.lock */,
+				24EACFC3210EDFB10096995C /* Sources */,
+				24EACFC4210EDFB10096995C /* Frameworks */,
+				24EACFC5210EDFB10096995C /* Resources */,
+				0282287F40FDD8562B18BA7D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BusinessCardScanner;
+			productName = BusinessCardScanner;
+			productReference = 24EACFC7210EDFB10096995C /* BusinessCardScanner.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24EACFBF210EDFB10096995C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "宋 奎熹";
+				TargetAttributes = {
+					24EACFC6210EDFB10096995C = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = 24EACFC2210EDFB10096995C /* Build configuration list for PBXProject "BusinessCardScanner" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 24EACFBE210EDFB10096995C;
+			productRefGroup = 24EACFC8210EDFB10096995C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24EACFC6210EDFB10096995C /* BusinessCardScanner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		24EACFC5210EDFB10096995C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24EACFD5210EDFB20096995C /* LaunchScreen.storyboard in Resources */,
+				24EACFD2210EDFB20096995C /* Assets.xcassets in Resources */,
+				24EACFD0210EDFB10096995C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0282287F40FDD8562B18BA7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BusinessCardScanner/Pods-BusinessCardScanner-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BusinessCardScanner/Pods-BusinessCardScanner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A3AD17A0180508DBBE3AAC2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BusinessCardScanner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24EACFC3210EDFB10096995C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				241315A321104871001B8749 /* ContactManager.swift in Sources */,
+				241315A521104B18001B8749 /* ListTableViewCell.swift in Sources */,
+				244D5911211161AC008B2783 /* StringExtensions.swift in Sources */,
+				24EACFDD210EE3B50096995C /* InfoTableViewController.swift in Sources */,
+				241315A121101058001B8749 /* ContactModel.swift in Sources */,
+				2413159B210FF9FF001B8749 /* UIImageExtensions.swift in Sources */,
+				244D590D2111478F008B2783 /* CardHelper.swift in Sources */,
+				24EACFCB210EDFB10096995C /* AppDelegate.swift in Sources */,
+				244D590F2111615C008B2783 /* Keys.swift in Sources */,
+				24EACFDF210EE7100096995C /* ListTableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		24EACFCE210EDFB10096995C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24EACFCF210EDFB10096995C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		24EACFD3210EDFB20096995C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				24EACFD4210EDFB20096995C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		24EACFD7210EDFB20096995C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		24EACFD8210EDFB20096995C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24EACFDA210EDFB20096995C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96A9350AB39564B3EA1F50CA /* Pods-BusinessCardScanner.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SF6KQ45R7;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = BusinessCardScanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.BusinessCardScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		24EACFDB210EDFB20096995C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FDA3CA19FB4C90B4F528A9F /* Pods-BusinessCardScanner.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SF6KQ45R7;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = BusinessCardScanner/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.BusinessCardScanner;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24EACFC2210EDFB10096995C /* Build configuration list for PBXProject "BusinessCardScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24EACFD7210EDFB20096995C /* Debug */,
+				24EACFD8210EDFB20096995C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24EACFD9210EDFB20096995C /* Build configuration list for PBXNativeTarget "BusinessCardScanner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24EACFDA210EDFB20096995C /* Debug */,
+				24EACFDB210EDFB20096995C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24EACFBF210EDFB10096995C /* Project object */;
+}
