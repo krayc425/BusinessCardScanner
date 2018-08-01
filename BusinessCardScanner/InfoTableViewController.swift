@@ -14,7 +14,7 @@ class InfoTableViewController: UITableViewController {
 
     var contactModel: ContactModel?
     
-    // 0 Name, Title
+    // 0 Name, Title, Company
     // 1 Phone
     // 2 Email
     // 3 Address
@@ -64,7 +64,7 @@ class InfoTableViewController: UITableViewController {
         }
         switch section {
         case 0:
-            return 3
+            return 4
         case 1:
             return contact.telephone.count
         case 2:
@@ -94,6 +94,12 @@ class InfoTableViewController: UITableViewController {
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
             cell.textLabel?.text = contactModel?.title
             cell.detailTextLabel?.text = "Title"
+            return cell
+        case (0, 3):
+            let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
+            cell.textLabel?.numberOfLines = 0
+            cell.textLabel?.text = contactModel?.company
+            cell.detailTextLabel?.text = "Company"
             return cell
         case (1, _):
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)

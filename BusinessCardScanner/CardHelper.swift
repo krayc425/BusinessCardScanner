@@ -47,9 +47,9 @@ class CardHelper: NSObject {
                         print(taskXml)
                         if let resultUrl = taskXml["response"]["task"][0].element?.attribute(by: "resultUrl")?.text {
                             self.fetchedDataByDataTask(from: URLRequest(url: URL(string: resultUrl)!)) {
-                                let resultXml = SWXMLHash.parse($0)
-                                print(resultXml)
-                                handler(ContactModel(xml: resultXml["document"]["businessCard"][0]))
+                                var contact = ContactModel(xml: SWXMLHash.parse($0))
+                                contact.image = imageData
+                                handler(contact)
                             }
                         }
                     })

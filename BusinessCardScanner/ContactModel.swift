@@ -13,6 +13,11 @@ import SWXMLHash
 struct CardItem: Codable {
     var value: String
     var type: [String]
+    
+    init(value: String, type: [String]) {
+        self.value = value
+        self.type = type
+    }
 }
 
 struct ContactModel: Codable, Hashable {
@@ -30,12 +35,50 @@ struct ContactModel: Codable, Hashable {
     var address: [CardItem]
     var url: [String]
     var email: [String]
+    var company: String
     
     var image: Data = Data()
     
     init(xml: XMLIndexer) {
-        print(xml["field"])
-        self.init()
+        self.init(isMe: false)
+        xml["document"]["businessCard"]["field"].all.forEach {
+            handleXMLField($0)
+        }
+
+        func handleXMLField(_ xmlIndexer: XMLIndexer) {
+            let type = xmlIndexer.element!.attribute(by: "type")!.text
+            let value = xmlIndexer["value"].element!.text
+            switch type {
+            case "Phone":
+                self.telephone.append(CardItem(value: value, type: ["phone"]))
+            case "Fax":
+                self.telephone.append(CardItem(value: value, type: ["fax"]))
+            case "Mobile":
+                self.telephone.append(CardItem(value: value, type: ["mobile"]))
+            case "Email":
+                self.email.append(value)
+            case "Address":
+                self.address.append(CardItem(value: value, type: ["work"]))
+            case "Name":
+                self.formattedName = value
+                xmlIndexer["fieldComponents"]["fieldComponent"].all.forEach {
+                    handleXMLField($0)
+                }
+            case "FirstName":
+                self.firstName = value
+            case "LastName":
+                self.lastName = value
+            case "Job":
+                self.title = value
+            case "Company":
+                self.company = value
+            case "Web":
+                self.url.append(value)
+            default:
+                break
+            }
+        }
+        print(xml)
     }
     
     init(json: JSON) {
@@ -59,19 +102,35 @@ struct ContactModel: Codable, Hashable {
             return CardItem(value: "\($0["item"]["street"].stringValue) \($0["item"]["locality"].stringValue)",
                             type: $0["item"]["type"].arrayValue.map { $0.stringValue })
         }
+        self.company = json["organization"].arrayValue.map { $0["item"] }.first(where: { (json) -> Bool in
+            json["name"] != ""
+        })?["name"].stringValue ?? ""
         print(json)
     }
     
-    init() {
-        self.email = ["krayc425@gmail.com"]
-        self.firstName = "Kuixi"
-        self.lastName = "Song"
-        self.formattedName = "Kuixi Song"
-        self.telephone = [CardItem(value: "+8612345678", type: ["home", "cell"]),
-                          CardItem(value: "+8687654321", type: ["work", "phone"])]
-        self.url = ["http://www.baidu.com", "http://github.com/songkuixi"]
-        self.title = "iOS Developer"
-        self.address = [CardItem(value: "Somewhere", type: ["work"])]
+    init(isMe: Bool) {
+        if isMe {
+            self.email = ["krayc425@gmail.com"]
+            self.firstName = "Kuixi"
+            self.lastName = "Song"
+            self.formattedName = "Kuixi Song"
+            self.telephone = [CardItem(value: "+8612345678", type: ["home", "cell"]),
+                              CardItem(value: "+8687654321", type: ["work", "phone"])]
+            self.url = ["http://www.baidu.com", "http://github.com/songkuixi"]
+            self.title = "iOS Developer"
+            self.address = [CardItem(value: "Somewhere", type: ["work"])]
+            self.company = "None"
+        } else {
+            self.email = []
+            self.firstName = ""
+            self.lastName = ""
+            self.formattedName = ""
+            self.telephone = []
+            self.url = []
+            self.title = ""
+            self.address = []
+            self.company = ""
+        }
     }
     
     static func ==(lhs: ContactModel, rhs: ContactModel) -> Bool {

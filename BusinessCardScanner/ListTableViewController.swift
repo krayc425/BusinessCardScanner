@@ -60,6 +60,10 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
     }
     
     @IBAction func cameraAction(_ sender: UIBarButtonItem) {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            return
+        }
+        
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
