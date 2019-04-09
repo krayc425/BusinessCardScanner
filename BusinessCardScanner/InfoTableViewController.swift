@@ -92,14 +92,17 @@ class InfoTableViewController: UITableViewController {
             return cell
         case (0, 2):
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
+            cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = contactModel?.title
             cell.detailTextLabel?.text = "Title"
+            cell.textLabel?.sizeToFit()
             return cell
         case (0, 3):
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.text = contactModel?.company
             cell.detailTextLabel?.text = "Company"
+            cell.textLabel?.sizeToFit()
             return cell
         case (1, _):
             let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
@@ -129,10 +132,9 @@ class InfoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath)
-        if let text = cell?.textLabel?.text,
-            let detail = cell?.detailTextLabel?.text {
+        if let text = cell?.textLabel?.text, text != "" {
             var tempText: UITextField?
-            let alert = UIAlertController(title: "Edit \(detail)", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Edit", message: nil, preferredStyle: .alert)
             alert.addTextField { (textField) in
                 tempText = textField
                 textField.text = text

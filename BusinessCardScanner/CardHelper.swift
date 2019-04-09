@@ -20,6 +20,23 @@ class CardHelper: NSObject {
     }
     
     func abbyyRecognize(_ image: UIImage, handler: @escaping ((ContactModel) -> Void)) {
+        func fetchedDataByDataTask(from request: URLRequest, completion: @escaping (Data) -> Void){
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                if error != nil {
+                    print(error as Any)
+                } else {
+                    guard let data = data else{
+                        return
+                    }
+                    completion(data)
+                }
+            }
+            task.resume()
+        }
+        
+        handler(ContactModel(isMe: true))
+        return
+        
         print("USING ABBYY!!")
         let authKey = "Basic \(String(format: "%@:%@", ABBYYKeys.id, ABBYYKeys.password).base64EncodedString())"
         
@@ -42,12 +59,12 @@ class CardHelper: NSObject {
                     let taskUrl = URL(string: "https://cloud.ocrsdk.com/getTaskStatus?taskId=\(taskId)")!
                     var taskRequest = URLRequest(url: taskUrl)
                     taskRequest.setValue(authKey, forHTTPHeaderField: "Authorization")
-                    self.fetchedDataByDataTask(from: taskRequest, completion: {
+                    fetchedDataByDataTask(from: taskRequest, completion: {
                         let taskXml = SWXMLHash.parse($0)
                         print(taskXml)
                         if let resultUrl = taskXml["response"]["task"][0].element?.attribute(by: "resultUrl")?.text {
-                            self.fetchedDataByDataTask(from: URLRequest(url: URL(string: resultUrl)!)) {
-                                var contact = ContactModel(xml: SWXMLHash.parse($0))
+                            fetchedDataByDataTask(from: URLRequest(url: URL(string: resultUrl)!)) {
+                                var contact = ContactModel(xmlIndexer: SWXMLHash.parse($0))
                                 contact.image = imageData
                                 handler(contact)
                             }
@@ -56,20 +73,6 @@ class CardHelper: NSObject {
                 })
             }
         }
-    }
-    
-    private func fetchedDataByDataTask(from request: URLRequest, completion: @escaping (Data) -> Void){
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if error != nil {
-                print(error as Any)
-            } else {
-                guard let data = data else{
-                    return
-                }
-                completion(data)
-            }
-        }
-        task.resume()
     }
     
     func camcardRecognize(_ image: UIImage, handler: @escaping ((ContactModel) -> Void)) {

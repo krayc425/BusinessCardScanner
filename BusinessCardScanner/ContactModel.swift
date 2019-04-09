@@ -23,8 +23,9 @@ struct CardItem: Codable {
 struct ContactModel: Codable, Hashable {
     
     var addedTime: Date = Date()
-    var hashValue: Int {
-        return Int(addedTime.timeIntervalSince1970)
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(Int(addedTime.timeIntervalSince1970))
     }
 
     var formattedName: String
@@ -39,9 +40,9 @@ struct ContactModel: Codable, Hashable {
     
     var image: Data = Data()
     
-    init(xml: XMLIndexer) {
+    init(xmlIndexer: XMLIndexer) {
         self.init(isMe: false)
-        xml["document"]["businessCard"]["field"].all.forEach {
+        xmlIndexer["document"]["businessCard"]["field"].all.forEach {
             handleXMLField($0)
         }
 
@@ -49,12 +50,8 @@ struct ContactModel: Codable, Hashable {
             let type = xmlIndexer.element!.attribute(by: "type")!.text
             let value = xmlIndexer["value"].element!.text
             switch type {
-            case "Phone":
-                self.telephone.append(CardItem(value: value, type: ["phone"]))
-            case "Fax":
-                self.telephone.append(CardItem(value: value, type: ["fax"]))
-            case "Mobile":
-                self.telephone.append(CardItem(value: value, type: ["mobile"]))
+            case "Phone", "Fax", "Mobile":
+                self.telephone.append(CardItem(value: value, type: [type.lowercased()]))
             case "Email":
                 self.email.append(value)
             case "Address":
@@ -78,7 +75,7 @@ struct ContactModel: Codable, Hashable {
                 break
             }
         }
-        print(xml)
+        print(xmlIndexer)
     }
     
     init(json: JSON) {

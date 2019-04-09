@@ -8,15 +8,15 @@
 
 struct CamcardKeys {
     
-    static let pin = ""
-    static let user = ""
-    static let pass = ""
+    static let pin  = "testkrayc"
+    static let user = "krayc425@gmail.com"
+    static let pass = "787T59N96DQ67TXQ"
     
 }
 
 struct ABBYYKeys {
     
-    static let id = ""
-    static let password = ""
+    static let id       = "JapaneseWordbook"
+    static let password = "/NlF9n9UUk3LRk9qR3HXuUNE"
     
 }

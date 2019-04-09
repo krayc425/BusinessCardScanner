@@ -32,13 +32,15 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
         sc.addTarget(self, action: #selector(recognizerChanged(_:)), for: .valueChanged)
         return sc
     }()
+    var selectedContacts: Set<ContactModel> = Set()
       
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        self.tableView.tableFooterView = UIView()
         
         self.navigationItem.titleView = recognizerSegmentControl
+        self.navigationController?.toolbar.isHidden = true
     }
     
     @objc func recognizerChanged(_ sender: UISegmentedControl) {
@@ -53,7 +55,7 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
     }
     
     private func reloadData() {
-        contactArray = contactManager.contactArray()
+        self.contactArray = contactManager.contactArray()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -76,7 +78,7 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
 
         self.waitingCount += 1
         
-        let image = (info[UIImagePickerController.InfoKey.originalImage] as! UIImage).compressImage(maxLength: 100000)
+        let image = (info[UIImagePickerController.InfoKey.originalImage] as! UIImage).compressImage(maxLength: 200000)
         
         switch currentRecognizer {
         case .abbyy:
@@ -94,7 +96,27 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
                 self.reloadData()
             }
         }
-        
+    }
+    
+    @IBAction func editAction(_ sender: UIBarButtonItem) {
+        if self.tableView.isEditing {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editAction(_:)))
+            self.navigationController?.toolbar.isHidden = true
+            self.tableView.setEditing(false, animated: true)
+            self.selectedContacts.removeAll()
+        } else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(editAction(_:)))
+            self.navigationController?.toolbar.isHidden = false
+            self.tableView.setEditing(true, animated: true)
+        }
+    }
+    
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        print(self.selectedContacts)
+    }
+    
+    @IBAction func exportAction(_ sender: UIBarButtonItem) {
+        print(self.selectedContacts)
     }
     
     // MARK: - Table view data source
@@ -113,14 +135,31 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
             cell = ListTableViewCell()
         }
 
-        cell?.bind(with: contactArray[indexPath.row])
+        let contact = contactArray[indexPath.row]
+        cell!.bind(with: contact)
         
         return cell!
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.performSegue(withIdentifier: "detailSegue", sender: contactArray[indexPath.row])
+        let contact = contactArray[indexPath.row]
+        if tableView.isEditing {
+            if !self.selectedContacts.contains(contact) {
+                self.selectedContacts.insert(contact)
+            }
+        } else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.performSegue(withIdentifier: "detailSegue", sender: contact)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let contact = contactArray[indexPath.row]
+        if tableView.isEditing {
+            if self.selectedContacts.contains(contact) {
+                self.selectedContacts.remove(contact)
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -128,7 +167,7 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
+        return UITableViewCell.EditingStyle(rawValue: UITableViewCell.EditingStyle.delete.rawValue | UITableViewCell.EditingStyle.insert.rawValue)!
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
