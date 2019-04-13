@@ -75,7 +75,7 @@ class CardHelper: NSObject {
         }
     }
     
-    func camcardRecognize(_ image: UIImage, handler: @escaping ((ContactModel) -> Void)) {
+    func camcardRecognize(_ image: UIImage, handler: @escaping ((ContactModel?) -> Void)) {
         print("USING CAMCARD!!")
         let imageData = image.jpegData(compressionQuality: 1.0)!
 
@@ -94,6 +94,7 @@ class CardHelper: NSObject {
                 upload.responseJSON { response in
                     if let err = response.error {
                         print(err.localizedDescription)
+                        handler(nil)
                         return
                     } else {
                         var contact = ContactModel(json: JSON(response.result.value!))
@@ -103,6 +104,7 @@ class CardHelper: NSObject {
                 }
             case .failure(let error):
                 print("Error in upload: \(error.localizedDescription)")
+                handler(nil)
             }
         }
     }

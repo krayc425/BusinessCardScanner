@@ -8,12 +8,6 @@
 
 import UIKit
 
-enum ProcessStatus {
-    case none
-    case processing
-    case done
-}
-
 class ListTableViewCell: UITableViewCell {
     
     static let fmt: DateFormatter = {
@@ -21,19 +15,6 @@ class ListTableViewCell: UITableViewCell {
         df.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return df
     }()
-    
-    var status: ProcessStatus = .none {
-        didSet {
-//            switch status {
-//            case .processing:
-//                detailTextLabel?.text = "Processing"
-//            case .done:
-//                detailTextLabel?.text = "Done"
-//            case .none:
-//                detailTextLabel?.text = ""
-//            }
-        }
-    }
 
     func bind(with contact: ContactModel) {
         textLabel?.text = contact.formattedName

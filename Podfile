@@ -6,7 +6,6 @@ target 'BusinessCardScanner' do
   use_frameworks!
 
   # Pods for BusinessCardScanner
-  pod 'SVProgressHUD'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'SWXMLHash'
@@ -18,7 +17,7 @@ target 'BusinessCardScannerTests' do
   use_frameworks!
 
   # Pods for BusinessCardScanner
-  pod 'SWXMLHash'
   pod 'SwiftyJSON'
+  pod 'SWXMLHash'
 
 end

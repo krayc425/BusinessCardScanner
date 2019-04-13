@@ -43,13 +43,43 @@ class InfoTableViewController: UITableViewController {
         }
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        self.navigationController?.toolbar.isHidden = false
+//    }
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        self.navigationController?.toolbar.isHidden = true
+//    }
+    
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
+    @IBAction func deleteAction(_ sender: UIBarButtonItem) {
+        
+    }
+    
     @IBAction func exportAction(_ sender: UIBarButtonItem) {
+        guard let model = self.contactModel else {
+            return
+        }
         let alert = UIAlertController(title: "Choose an action", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Save to Outlook", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "Save to GSGO", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Save to Contacts", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save to Contacts", style: .default, handler: { (_) in
+            ExportHelper.shared.exportToAddressList(model, handler: { (error) in
+                var message = "Export successfully"
+                if error != nil {
+                    message = "Export failed"
+                }
+                let innerAlert = UIAlertController(title: message, message: error?.localizedDescription ?? "", preferredStyle: .alert)
+                innerAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(innerAlert, animated: true, completion: nil)
+            })
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Table view data source

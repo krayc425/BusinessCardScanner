@@ -11,6 +11,11 @@
 		241315A121101058001B8749 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A021101058001B8749 /* ContactModel.swift */; };
 		241315A321104871001B8749 /* ContactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A221104870001B8749 /* ContactManager.swift */; };
 		241315A521104B18001B8749 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241315A421104B18001B8749 /* ListTableViewCell.swift */; };
+		243019C5225CC0DB00F1D471 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243019C4225CC0DB00F1D471 /* CameraViewController.swift */; };
+		243019C7225CC11900F1D471 /* VisualizeRectanlgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243019C6225CC11900F1D471 /* VisualizeRectanlgesView.swift */; };
+		243019C9225CC1AC00F1D471 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243019C8225CC1AC00F1D471 /* Constants.swift */; };
+		243019CB225DC32B00F1D471 /* ExportHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243019CA225DC32B00F1D471 /* ExportHelper.swift */; };
+		243019CD22617E6200F1D471 /* CNMutableContactExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243019CC22617E6200F1D471 /* CNMutableContactExtensions.swift */; };
 		244D590D2111478F008B2783 /* CardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D590C2111478F008B2783 /* CardHelper.swift */; };
 		244D590F2111615C008B2783 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D590E2111615C008B2783 /* Keys.swift */; };
 		244D5911211161AC008B2783 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244D5910211161AC008B2783 /* StringExtensions.swift */; };
@@ -41,6 +46,11 @@
 		241315A021101058001B8749 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		241315A221104870001B8749 /* ContactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactManager.swift; sourceTree = "<group>"; };
 		241315A421104B18001B8749 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		243019C4225CC0DB00F1D471 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		243019C6225CC11900F1D471 /* VisualizeRectanlgesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeRectanlgesView.swift; sourceTree = "<group>"; };
+		243019C8225CC1AC00F1D471 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		243019CA225DC32B00F1D471 /* ExportHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportHelper.swift; sourceTree = "<group>"; };
+		243019CC22617E6200F1D471 /* CNMutableContactExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNMutableContactExtensions.swift; sourceTree = "<group>"; };
 		244D590C2111478F008B2783 /* CardHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHelper.swift; sourceTree = "<group>"; };
 		244D590E2111615C008B2783 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		244D5910211161AC008B2783 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -97,6 +107,7 @@
 			children = (
 				244D5910211161AC008B2783 /* StringExtensions.swift */,
 				2413159A210FF9FF001B8749 /* UIImageExtensions.swift */,
+				243019CC22617E6200F1D471 /* CNMutableContactExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -140,7 +151,11 @@
 				244D590E2111615C008B2783 /* Keys.swift */,
 				244D590C2111478F008B2783 /* CardHelper.swift */,
 				241315A021101058001B8749 /* ContactModel.swift */,
+				243019CA225DC32B00F1D471 /* ExportHelper.swift */,
 				241315A221104870001B8749 /* ContactManager.swift */,
+				243019C4225CC0DB00F1D471 /* CameraViewController.swift */,
+				243019C6225CC11900F1D471 /* VisualizeRectanlgesView.swift */,
+				243019C8225CC1AC00F1D471 /* Constants.swift */,
 				244D5912211164B3008B2783 /* Extensions */,
 				24EACFD1210EDFB20096995C /* Assets.xcassets */,
 				24EACFCE210EDFB10096995C /* Main.storyboard */,
@@ -271,14 +286,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BusinessCardScanner/Pods-BusinessCardScanner-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -359,16 +372,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				243019C5225CC0DB00F1D471 /* CameraViewController.swift in Sources */,
 				241315A321104871001B8749 /* ContactManager.swift in Sources */,
+				243019CD22617E6200F1D471 /* CNMutableContactExtensions.swift in Sources */,
 				241315A521104B18001B8749 /* ListTableViewCell.swift in Sources */,
 				244D5911211161AC008B2783 /* StringExtensions.swift in Sources */,
 				24EACFDD210EE3B50096995C /* InfoTableViewController.swift in Sources */,
 				241315A121101058001B8749 /* ContactModel.swift in Sources */,
 				2413159B210FF9FF001B8749 /* UIImageExtensions.swift in Sources */,
+				243019C9225CC1AC00F1D471 /* Constants.swift in Sources */,
+				243019C7225CC11900F1D471 /* VisualizeRectanlgesView.swift in Sources */,
 				244D590D2111478F008B2783 /* CardHelper.swift in Sources */,
 				24EACFCB210EDFB10096995C /* AppDelegate.swift in Sources */,
 				244D590F2111615C008B2783 /* Keys.swift in Sources */,
 				24EACFDF210EE7100096995C /* ListTableViewController.swift in Sources */,
+				243019CB225DC32B00F1D471 /* ExportHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

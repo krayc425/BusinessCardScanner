@@ -10,6 +10,14 @@ import Foundation
 import SwiftyJSON
 import SWXMLHash
 
+enum ContactStatus {
+    
+    case processing
+    case new
+    case done
+    
+}
+
 struct CardItem: Codable {
     var value: String
     var type: [String]
@@ -75,7 +83,6 @@ struct ContactModel: Codable, Hashable {
                 break
             }
         }
-        print(xmlIndexer)
     }
     
     init(json: JSON) {
@@ -102,7 +109,6 @@ struct ContactModel: Codable, Hashable {
         self.company = json["organization"].arrayValue.map { $0["item"] }.first(where: { (json) -> Bool in
             json["name"] != ""
         })?["name"].stringValue ?? ""
-        print(json)
     }
     
     init(isMe: Bool) {

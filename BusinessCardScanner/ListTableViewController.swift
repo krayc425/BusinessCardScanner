@@ -13,33 +13,27 @@ enum Recognizer {
     case camcard
 }
 
-class ListTableViewController: UITableViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class ListTableViewController: UITableViewController {
 
-    var imagePicker: UIImagePickerController!
-    var contactArray: [ContactModel] = []
-    var contactManager = ContactManager.shared
-    var cardHelper = CardHelper.shared
-    
-    var waitingCount: UInt = 0 {
-        didSet {
-            reloadData()
-        }
-    }
-    var currentRecognizer: Recognizer = .abbyy
-    lazy var recognizerSegmentControl: UISegmentedControl = {
-        let sc = UISegmentedControl(items: ["ABBYY", "Camcard"])
-        sc.selectedSegmentIndex = 0
-        sc.addTarget(self, action: #selector(recognizerChanged(_:)), for: .valueChanged)
-        return sc
-    }()
-    var selectedContacts: Set<ContactModel> = Set()
+    var contactArray        : [ContactModel] = []
+    var contactManager      : ContactManager = .shared
+    var cardHelper          : CardHelper = .shared
+    var waitingCount        : UInt = 0
+    var currentRecognizer   : Recognizer = .abbyy
+    var selectedContacts    : Set<ContactModel> = Set()
+    var imageQueue          : [UIImage] = []
+    var failedContacts      : [UIImage] = []
       
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.tableFooterView = UIView()
         
-        self.navigationItem.titleView = recognizerSegmentControl
+        let sc = UISegmentedControl(items: ["ABBYY", "Camcard"])
+        sc.selectedSegmentIndex = 0
+        sc.addTarget(self, action: #selector(recognizerChanged(_:)), for: .valueChanged)
+        self.navigationItem.titleView = sc
+        
         self.navigationController?.toolbar.isHidden = true
     }
     
@@ -59,43 +53,7 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-    }
-    
-    @IBAction func cameraAction(_ sender: UIBarButtonItem) {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            return
-        }
-        
-        imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        dismiss(animated: true, completion: nil)
-
-        self.waitingCount += 1
-        
-        let image = (info[UIImagePickerController.InfoKey.originalImage] as! UIImage).compressImage(maxLength: 200000)
-        
-        switch currentRecognizer {
-        case .abbyy:
-            cardHelper.abbyyRecognize(image) { (contact) in
-                self.waitingCount -= 1
-                
-                self.contactManager.addContact(contact)
-                self.reloadData()
-            }
-        case .camcard:
-            cardHelper.camcardRecognize(image) { (contact) in
-                self.waitingCount -= 1
-                
-                self.contactManager.addContact(contact)
-                self.reloadData()
-            }
-        }
+//        self.processImage()
     }
     
     @IBAction func editAction(_ sender: UIBarButtonItem) {
@@ -117,6 +75,32 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
     
     @IBAction func exportAction(_ sender: UIBarButtonItem) {
         print(self.selectedContacts)
+    }
+    
+    func processImage() {
+        guard let firstImage = self.imageQueue.first else {
+            return
+        }
+        
+        switch currentRecognizer {
+        case .abbyy:
+            cardHelper.abbyyRecognize(firstImage) { (contact) in
+                self.waitingCount -= 1
+                
+                self.contactManager.addContact(contact)
+                self.reloadData()
+            }
+        case .camcard:
+            cardHelper.camcardRecognize(firstImage) { (contact) in
+                self.waitingCount -= 1
+                if let contact = contact {
+                    self.contactManager.addContact(contact)
+                    self.reloadData()
+                } else {
+                    self.failedContacts.append(firstImage)
+                }
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -192,6 +176,27 @@ class ListTableViewController: UITableViewController, UINavigationControllerDele
         if segue.identifier == "detailSegue" {
             let infoVC: InfoTableViewController = segue.destination as! InfoTableViewController
             infoVC.contactModel = (sender as! ContactModel)
+        } else if segue.identifier == "cameraSegue" {
+            let cameraVC: CameraViewController = segue.destination as! CameraViewController
+            cameraVC.delegate = self
+        }
+    }
+    
+}
+
+extension ListTableViewController: CapturePictureDelegate {
+    
+    func capture(with image: UIImage) {
+        self.waitingCount += 1
+        
+        self.imageQueue.append(image)
+        
+        guard self.waitingCount == self.imageQueue.count else {
+            return
+        }
+        
+        if self.imageQueue.count == 1 {
+            self.processImage()
         }
     }
     
